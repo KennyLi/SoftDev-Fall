@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Table of Occupations and Their Percentages</title>
+  </head>
+  <body>
+    <h1>Table of Occupations and Their Percentages</h1>
+    {{weighted}}
+    <br>
+    <table border = "1">
+        {% for i in range(dataList|length) %}
+            {% if i == 0 %}
+                <tr>
+                    <th>{{dataList[i][0]}}</th>
+                    <th>{{dataList[i][1]}}</th>
+                </tr>
+            {% else %}
+            <tr>
+                <td>{{dataList[i][0]}}</td>
+                <td>{{dataList[i][1]}}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+  </body>
+</html>
