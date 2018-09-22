@@ -1,7 +1,7 @@
 #Kenny Li
 #SoftDev1 pd8
-#K08 -- Fill Yer Flask
-#2018-09-20'''
+#K10 -- Jinja Tuning
+#2018-09-24M
 
 from flask import Flask, render_template
 app = Flask(__name__)
