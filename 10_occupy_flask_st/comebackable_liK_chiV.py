@@ -10,28 +10,28 @@ import csv
 import random
 
 with open('data/occupations.csv', 'r') as csv_file:
-    csv_reader = csv.reader(csv_file)
+    csv_reader = csv.reader(csv_file) #creates a csv reader object which iterates through the csv file
     data = []
-    for row in csv_reader:
+    for row in csv_reader: #adds each row from the csv file into the list
         data.append(row)
 
 def weightedRandom():
-    d = dict(data)
+    occDict = dict(data) #converts a list into a dictionary
 
-    total = float(d['Total']) #sets total to total percentage
+    total = float(occDict['Total']) #sets total to total percentage
     randFloat = round(random.uniform(0,total-.1), 1) #creates random float btwn 0, 99.7 inclusive
 
-    if 'Total' in d: #deletes the total key
-        del d['Total']
-
-    if 'Job Class' in d: #deletes the job class key
-        del d['Job Class']
+    if 'Job Class' in occDict: #deletes the job class key (first row)
+        del occDict['Job Class']   
+   
+    if 'Total' in occDict: #deletes the total key (last row)
+        del occDict['Total']
 
     sum = 0.0
-    for percentage in d: #continuously adds the percentage
-        sum += float(d[percentage])
-        if(round(sum, 1)) > randFloat: #returns 1st percentage that exceeds the randomly generated float
-            return percentage
+    for occupation in occDict: #continuously adds the percentage into a rolling sum
+        sum += float(occDict[occupation])
+        if(round(sum, 1)) > randFloat: #returns 1st occupation that exceeds the randomly generated float
+            return occupation
 
 @app.route("/occupations")
 def render():
@@ -40,5 +40,5 @@ def render():
                             weighted = weightedRandom()) 
 
 if __name__ == "__main__":
-    app.debug = True;
+    app.debug = True
     app.run()

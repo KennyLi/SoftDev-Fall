@@ -8,12 +8,16 @@
     {{weighted}}
     <br>
     <table border = "1">
+        <!-- iterates through each data from dataList -->
+        <!-- range returns from 0 to length of dataList - 1 -->
         {% for i in range(dataList|length) %}
-            {% if i == 0 %}
+            <!-- if i is 0, its the first row which are the headers -->
+            {% if i == 0 %} 
                 <tr>
                     <th>{{dataList[i][0]}}</th>
                     <th>{{dataList[i][1]}}</th>
                 </tr>
+            <!-- anything else besides the first row is data -->
             {% else %}
             <tr>
                 <td>{{dataList[i][0]}}</td>
