@@ -33,9 +33,9 @@ c = db.cursor()               #facilitate db ops
 #==========================================================
 with open("data/courses.csv") as csvfile:
     reader = csv.DictReader(csvfile)
-    c.execute("CREATE TABLE IF NOT EXISTS peeps(code TEXT, mark INTEGER, id INTEGER, PRIMARY KEY(code, id))")
+    c.execute("CREATE TABLE IF NOT EXISTS courses(code TEXT, mark INTEGER, id INTEGER, PRIMARY KEY(code, id))")
     for row in reader:
-        c.execute("INSERT INTO peeps VALUES(" + "'" + row["code"] + "'"  + "," + row["mark"] + "," + row["id"] + ")")
+        c.execute("INSERT INTO courses VALUES(" + "'" + row["code"] + "'"  + "," + row["mark"] + "," + row["id"] + ")")
 
 #==========================================================
 
