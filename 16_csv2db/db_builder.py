@@ -11,26 +11,16 @@ DB_FILE="discobandit.db"
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
-#==========================================================
+#======================== ROUND 1 =========================
+
 with open("data/peeps.csv") as csvfile:
     reader = csv.DictReader(csvfile)
     c.execute("CREATE TABLE IF NOT EXISTS peeps(name TEXT, age INTEGER, id INTEGER PRIMARY KEY)")
     for row in reader:
         c.execute("INSERT INTO peeps VALUES(" + "'" + row["name"] + "'"  + "," + row["age"] + "," + row["id"] + ")")
 
-#==========================================================
-
-db.commit() #save changes
-db.close()  #close database
-
 #======================== ROUND 2 =========================
 
-DB_FILE="banditdisco.db"
-
-db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
-c = db.cursor()               #facilitate db ops
-
-#==========================================================
 with open("data/courses.csv") as csvfile:
     reader = csv.DictReader(csvfile)
     c.execute("CREATE TABLE IF NOT EXISTS courses(code TEXT, mark INTEGER, id INTEGER, PRIMARY KEY(code, id))")
