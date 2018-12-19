@@ -1,7 +1,7 @@
-//CK -
+//KC -- Kenny & Cheryl
 //Softdev pd8
-//K28 -- Sequential Progression
-//2018-12-18
+//K29 -- Sequential Progression II: Electric Boogaloo
+//2018-12-19
 
 var fibonacci = function(n){
     if (n < 2){
@@ -27,5 +27,17 @@ var randomStudent = function(){
     return students[Math.floor(Math.random() * students.length)];
 };
 
-var fib = document.getElementById('fib')
-fib.addEventListener("click", fibonacci)
+document.getElementById('fib').addEventListener("click", function() {
+    console.log(fibonacci(10));
+    document.getElementById("paragraph").innerHTML = fibonacci(10);
+});
+
+document.getElementById('gcd').addEventListener("click", function() {
+    console.log(gcd(10,100));
+    document.getElementById("paragraph").innerHTML = gcd(10, 100);
+});
+
+document.getElementById('randomStudent').addEventListener("click", function() {
+    console.log(randomStudent());
+    document.getElementById("paragraph").innerHTML = randomStudent();
+});
