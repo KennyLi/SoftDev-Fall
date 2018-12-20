@@ -34,7 +34,12 @@ var addItem = function(e) {
     // console.log("added element");
     var node  = document.createElement("li");
     node.innerHTML = "WORD";
-    document.getElementById('thelist').appendChild(node);
+    node.addEventListener("mouseover", changeHeading);
+    node.addEventListener("mouseout", function() {
+        document.getElementById("h").innerHTML = "Hello World!";
+    });
+    node.addEventListener("click", removeItem);
+    document.getElementById('thelist').appendChild(node);    
 };
 
 document.getElementById('b').addEventListener("click", addItem);
