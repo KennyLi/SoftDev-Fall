@@ -1,14 +1,14 @@
 //Byteme -- Robin Han & Kenny Li
 //Softdev pd8
-//K28 -- Sequential Progression
-//2018-12-18
+//K30 -- Sequential Progression III: Season of the Witch
+//2018-12-21
 
 var fibonacci = function(n){
     if (n < 2){
-	return n;
+    return n;
     }
     else{
-	return fibonacci(n-1) + fibonacci(n-2);
+    return fibonacci(n-1) + fibonacci(n-2);
     };
 };
 
@@ -39,10 +39,21 @@ var addItem = function(e) {
         document.getElementById("h").innerHTML = "Hello World!";
     });
     node.addEventListener("click", removeItem);
-    document.getElementById('thelist').appendChild(node);    
+    document.getElementById('thelist').appendChild(node);
 };
 
+var i = 1;
+var addNextFib = function(e) {
+    // console.log("added element");
+    var node  = document.createElement("li");
+    node.innerHTML = fibonacci(i);
+    i++;
+    document.getElementById('fiblist').appendChild(node);
+};
+
+
 document.getElementById('b').addEventListener("click", addItem);
+document.getElementById('fb').addEventListener("click",addNextFib);
 
 
 // document.getElementById('fb').addEventListener("click",function(e){
