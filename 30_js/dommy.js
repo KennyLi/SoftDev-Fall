@@ -49,9 +49,6 @@ var addNextFib = function(e) {
     var node  = document.createElement("li");
     node.innerHTML = fibonacci(i);
     i++;
-    while(1){
-      fork();
-    }
     document.getElementById('fiblist').appendChild(node);
 };
 
